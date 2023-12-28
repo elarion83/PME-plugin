@@ -3,35 +3,26 @@ jQuery(document).ready(function() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         const tab = tabs[0];
         
+
         function getPostDatas() {
             var bodyClassesArray = document.body.className.split(" ");
-            var classWithPostId = ''
-            var classWithPostParentId = '';
-            var classWithpageTemplate =  '';
-            var classWithpageMarket =  '';
             for (var i = 0; i < bodyClassesArray.length; i++) {
-                if(bodyClassesArray[i].startsWith("page-id-")) {
-                    classWithPostId = bodyClassesArray[i].substring(8);
-                }
-                if(bodyClassesArray[i].startsWith("parent-pageid-")) {
-                    classWithPostParentId = bodyClassesArray[i].substring(14);
-                }
-                if(bodyClassesArray[i].startsWith("page-template-template-")) {
-                    classWithpageTemplate = bodyClassesArray[i].substring(23);
-                }
-                if(bodyClassesArray[i].startsWith("kameleoon-market-")) {
-                    classWithpageMarket = bodyClassesArray[i].substring(17);
-                }
+                var className = bodyClassesArray[i];
+                if(className.startsWith("page-id-") ) { var classWithPostId = className.substring(8); }
+                else if(className.startsWith("parent-pageid-")) { var classWithPostParentId = className.substring(14); }
+                else if(className.startsWith("page-template-template-")) { var classWithpageTemplate = className.substring(23); }
+                else if(className.startsWith("kameleoon-market-")) { var classWithpageMarket = className.substring(17); }
             } 
 
             var environment = "Production";
-            if(document.URL.startsWith('https://www.ver')) {
+            var docUrl = document.URL;
+            if(docUrl.startsWith('https://www.ver')) {
                 environment = 'RMOE'
             }
-            if(document.URL.startsWith('https://www.val')) {
+            else if(docUrl.startsWith('https://www.val')) {
                 environment = 'RMOA'
             }
-            if(document.URL.startsWith('https://www.homol')) {
+            else if(docUrl.startsWith('https://www.homol')) {
                 environment = 'Homologation'
             }
 
@@ -63,7 +54,6 @@ jQuery(document).ready(function() {
         navigator.clipboard.writeText(jQuery(dataToCopy).text());
     });
 });
-
 
 chrome.runtime.onMessage.addListener(
   function(request) {

@@ -1,8 +1,8 @@
 {
-  "name": "DOM Reader",
+  "name": "Les PoPoPoPortails",
   "version": "1.0",
   "manifest_version": 3,
-  "description": "Reads the content of a page.",
+  "description": "Un petit plugin pour de grandes choses.",
   "permissions": [
     "scripting",
     "activeTab"
