@@ -7,45 +7,109 @@
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-        <script src="material.js"></script>
         <script src="jquery.min.js"></script>
+        <script src="material.js"></script>
         <script src="index.js"></script>
   </head>
   <body>
-        
-        <ul class="collection with-header">
-            <li class="collection-header"><h4>Informations </h4></li>
-            <li class="collection-item">
-                <b>Environnement : </b>
-                <span id='environment'></span>
-            </li>
-            <li class="collection-item">
-                <b>Region : </b>
-                <span id='region'></span>
-            </li>
-            <li class="collection-item">
-                <b>Marché : </b>
-                <span id='market'></span>
-            </li>
-            <li class="collection-item">
-                <b>Version : </b>
-                <span id='version'></span>
-            </li>
-            <li class="collection-item">
-                <b>ID du post : </b>
-                <span id='postId'></span>
-                <span class="badge btn-small copybtn" copyData="#postId" title="Copier"> <i class="tiny material-icons">content_copy</i></span>
-            </li>
-            <li class="collection-item">
-                <b>ID du post parent : </b>
-                <span id='postParentId'></span>
-                <span class="badge btn-small copybtn" copyData="#postParentId" title="Copier"> <i class="tiny material-icons">content_copy</i></span>
-            </li>
-            <li class="collection-item">
-                <b>Page template : </b>
-                <span id='pageTemplate'></span>
-            </li>
+    <div class="row">
+        <h5>Welcome my bro !</h5>
+        <ul id="tabs-swipe-demo" class="tabs navigationTabs">
+            <li class="tab col s3"><a class="active" href="#technique">Technique</a></li>
+            <li class="tab col s3"><a href="#enablers">Enablers</a></li>
         </ul>
-
+        <div id="technique" class="col s12">
+            <ul class="collection">
+                <li class="collection-item">
+                    <b>Environnement : </b>
+                    <span id='environment'></span>
+                </li>
+                <li class="collection-item">
+                    <b>Region : </b>
+                    <span id='region'></span>
+                </li>
+                <li class="collection-item">
+                    <b>Marché : </b>
+                    <span id='market'></span>
+                </li>
+                <li class="collection-item">
+                    <b>Version : </b>
+                    <span id='version'></span>
+                    <span class="badge btn-small copybtn" copyData="#version" title="Copier"> <i class="tiny material-icons">content_copy</i></span>
+                </li>
+                <li class="collection-item">
+                    <b>ID du post : </b>
+                    <span id='postId'></span>
+                    <span class="badge btn-small copybtn" copyData="#postId" title="Copier"> <i class="tiny material-icons">content_copy</i></span>
+                </li>
+                <li class="collection-item">
+                    <b>ID du post parent : </b>
+                    <span id='postParentId'></span>
+                    <span class="badge btn-small copybtn" copyData="#postParentId" title="Copier"> <i class="tiny material-icons">content_copy</i></span>
+                </li>
+                <li class="collection-item">
+                    <b>Page template : </b>
+                    <span id='pageTemplate'></span>
+                </li>
+            </ul>
+        </div>
+        <div id="enablers" class="col s12">
+            <ul class="collapsible enablersCollapse">
+                <li>
+                    <div class="collapsible-header"><i class="tiny material-icons">network_check</i>Tealium (exemple)</div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="collection-item">
+                                <b>datalayer.pages.CodeEnttGrpe : </b>
+                                <span>078</span>
+                            </li>
+                            <li class="collection-item">
+                                <b>datalayer.pages.univers : </b>
+                                <span>comptes et moyens paiement</span>
+                            </li>
+                            <li class="collection-item">
+                                <b>datalayer.custom.typedesuccesportail : </b>
+                                <span>visibilite</span>
+                            </li>
+                            <li class="collection-item">
+                                <b>datalayer.custom.nomDeSite : </b>
+                                <span>banque populaire</span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="tiny material-icons">search</i>Inbenta (exemple)</div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="collection-item">
+                                <b>inbenta_env : </b>
+                                <span>production</span>
+                            </li>
+                            <li class="collection-item">
+                                <b>sdk_version : </b>
+                                <span>1.27</span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="tiny material-icons">location_disabled</i>Genesys (exemple)</div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="collection-item">
+                                <b>genesys_config.hostfrontend : </b>
+                                <span>www.occitane.banquepopulaire.fr</span>
+                            </li>
+                            <li class="collection-item">
+                                <b>genesys_config.bankname : </b>
+                                <span>BPOC</span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
   </body>
 </html>

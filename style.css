@@ -1,8 +1,94 @@
 body {
     padding: 1em;
+    padding-top: 0;
     width: 500px;
 }
 
 .copybtn i {
     color:white;
+}
+
+
+.tabs .tab {
+    display: inline-block;
+    text-align: center;
+    line-height: 48px;
+    height: 48px;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase
+}
+
+.tabs .tab a {
+    color: rgba(238,110,115,0.7);
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 24px;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-transition: color .28s ease, background-color .28s ease;
+    transition: color .28s ease, background-color .28s ease
+}
+
+.tabs .tab a:focus,.tabs .tab a:focus.active {
+    background-color: rgba(246,178,181,0.2);
+    outline: none
+}
+
+.tabs .tab a:hover,.tabs .tab a.active {
+    background-color: transparent;
+    color: #ee6e73
+}
+
+.tabs .indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #f6b2b5;
+    will-change: left, right
+}
+
+
+.collapsible {
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    margin: .5rem 0 1rem 0
+}
+
+.collapsible-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 2.5;
+    vertical-align: middle;
+    font-weight: bold;
+    padding: 1rem;
+    background-color:  #fff2f2;
+    border-bottom: 1px solid #ddd
+}
+
+.collapsible-header:focus {
+    outline: 0
+}
+
+.collapsible-header i {
+    width: 2rem;
+    font-size: 1.6rem;
+    display: inline-block;
+    text-align: center;
+    margin-right: 1rem
+}
+
+.collapsible-body {
+    padding: 0;
+}
+
+.keyboard-focused .collapsible-header:focus {
+    background-color: #eee
 }

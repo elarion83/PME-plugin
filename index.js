@@ -1,5 +1,8 @@
 jQuery(document).ready(function() {
+    jQuery('.navigationTabs').tabs();
+    $('.enablersCollapse').collapsible();
 
+    // On utilise chrome.tabs.query etc pour récuperer le contenu de la page. Sinon le DOM récupéré est celui de index.html 
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         const tab = tabs[0];
         
