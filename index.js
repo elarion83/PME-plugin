@@ -1,46 +1,74 @@
+jQuery(document).ready(function() {
 
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const tab = tabs[0];
+        
+        function getPostDatas() {
+            var bodyClassesArray = document.body.className.split(" ");
+            var classWithPostId = ''
+            var classWithPostParentId = '';
+            var classWithpageTemplate =  '';
+            for (var i = 0; i < bodyClassesArray.length; i++) {
+                if(bodyClassesArray[i].startsWith("page-id-")) {
+                    classWithPostId = bodyClassesArray[i].substring(8);
+                }
+                if(bodyClassesArray[i].startsWith("parent-pageid-")) {
+                    classWithPostParentId = bodyClassesArray[i].substring(14);
+                }
+                if(bodyClassesArray[i].startsWith("page-template-template-")) {
+                    classWithpageTemplate = bodyClassesArray[i].substring(23);
+                }
+            } 
 
+            var environment = "Production";
+            if(document.URL.startsWith('https://www.ver')) {
+                environment = 'RMOE'
+            }
+            if(document.URL.startsWith('https://www.val')) {
+                environment = 'RMOA'
+            }
+            if(document.URL.startsWith('https://www.homol')) {
+                environment = 'Homologation'
+            }
 
-/*
+            var version = document.getElementById("bpce-rgpd-js").src.split("=")[1];
+            var region = document.getElementById("bpce-redirection-clients-navigation-cookie-js-extra").text.split('"region":"')[1].split('"}')[0];
 
-function onWindowLoad() { var message = document.querySelector('#message');
+            var datas = new Object;
+            datas.postId = classWithPostId;
+            datas.postParentId = classWithPostParentId;
+            datas.pageTemplate = classWithpageTemplate;
+            datas.environment = environment;
+            datas.region = region;
+            datas.version = version;
+            (async () => {
+                const response = await chrome.runtime.sendMessage({datas: datas});
+            })();
+        };
 
-    chrome.tabs.query({ active: true, currentWindow: true }).then(function (tabs) {
-        var activeTab = tabs[0];
-        var activeTabId = activeTab.id;
+        chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: getPostDatas,
+        }).then();
 
-        return chrome.scripting.executeScript({
-            target: { tabId: activeTabId },
-            // injectImmediately: true,  // uncomment this to make it execute straight away, other wise it will wait for document_idle
-            func: DOMtoString,
-            // args: ['body']  // you can use this to target what element to get the html for
-        });
-
-    }).then(function (results) {
-        console.log(results[0].result);
-    }).catch(function (error) {
-        console.log('There was an error injecting script : \n' + error.message);
     });
-}
-window.onload = onWindowLoad;
 
-function DOMtoString(selector) {
-    if (selector) {
-        selector = document.querySelector(selector);
-        if (!selector) return "ERROR: querySelector failed to find node"
-    } else {
-        selector = document.documentElement;
-    }
-    return selector.outerHTML;
-}
+    jQuery(".copybtn").click(function() {
+        var dataToCopy = jQuery(this).attr('copyData');
+        navigator.clipboard.writeText(jQuery(dataToCopy).text());
+    });
+});
 
 
-jQuery('#txt_environnement').text('ee');
+chrome.runtime.onMessage.addListener(
+  function(request) {
+    var datas = request.datas;
+    document.getElementById("postId").innerText = datas.postId;
+    document.getElementById("postParentId").innerText = datas.postParentId;
+    document.getElementById("environment").innerText = datas.environment;
+    document.getElementById("version").innerText = datas.version;    
+    document.getElementById("region").innerText = datas.region;
+    document.getElementById("pageTemplate").innerText = datas.pageTemplate;
 
-console.log('aa');
-console.log(document.getElementsByTagName("body"));
-console.log(jQuery('body'));
-
-jQuery(function() {
-    jQuery('#txt_environnement').text(document.getElementsByTagName("body")[0].className);
- }); */
+  }
+);

@@ -1,16 +1,46 @@
+<!DOCTYPE html>
 <html>
-  <body>
-    <h1>BPCE </h1>
-    
-    <ul>
-        <li> Environnement : <span id="txt_environnement"></span></li>
-        <li> Version : <span id="txt_version"></span></li>
-        <li> Id du post : <span id="txt_id_post"></span></li>
-    </ul>
+  <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     
-    <script src="jquery.min.js"></script>
-    <script src="popup.js"></script>
-    <script src="index.js"></script>
+        <script src="material.js"></script>
+        <script src="jquery.min.js"></script>
+        <script src="index.js"></script>
+  </head>
+  <body>
+        
+        <ul class="collection with-header">
+            <li class="collection-header"><h4>Informations </h4></li>
+            <li class="collection-item">
+                <b>Environnement : </b>
+                <span id='environment'></span>
+            </li>
+            <li class="collection-item">
+                <b>Region : </b>
+                <span id='region'></span>
+            </li>
+            <li class="collection-item">
+                <b>Version : </b>
+                <span id='version'></span>
+            </li>
+            <li class="collection-item">
+                <b>ID du post : </b>
+                <span id='postId'></span>
+                <span class="badge btn-small copybtn" copyData="#postId" title="Copier"> <i class="tiny material-icons">content_copy</i></span>
+            </li>
+            <li class="collection-item">
+                <b>ID du post parent : </b>
+                <span id='postParentId'></span>
+                <span class="badge btn-small copybtn" copyData="#postParentId" title="Copier"> <i class="tiny material-icons">content_copy</i></span>
+            </li>
+            <li class="collection-item">
+                <b>Page template : </b>
+                <span id='pageTemplate'></span>
+            </li>
+        </ul>
+
   </body>
 </html>

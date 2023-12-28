@@ -1,20 +1,14 @@
 {
-  "name": "PME Plugin",
-  "description": "Le ptit plugin pour les grandes choses",
+  "name": "DOM Reader",
   "version": "1.0",
   "manifest_version": 3,
-  "action": {
-    "default_popup": "index.html",
-    "default_icon": "icon.png"
-  },
-  "background": {
-    "service_worker": "popup.js"
-  },
-
+  "description": "Reads the content of a page.",
   "permissions": [
-    "tabs",
-    
     "scripting",
     "activeTab"
-  ]
+  ],
+  "host_permissions": ["https://*/*"],
+  "action": {
+    "default_popup": "index.html"
+  }
 }
