@@ -1,0 +1,20 @@
+{
+  "name": "PME Plugin",
+  "description": "Le ptit plugin pour les grandes choses",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "popup.js"
+  },
+
+  "permissions": [
+    "tabs",
+    
+    "scripting",
+    "activeTab"
+  ]
+}
