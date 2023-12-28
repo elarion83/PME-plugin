@@ -8,6 +8,7 @@ jQuery(document).ready(function() {
             var classWithPostId = ''
             var classWithPostParentId = '';
             var classWithpageTemplate =  '';
+            var classWithpageMarket =  '';
             for (var i = 0; i < bodyClassesArray.length; i++) {
                 if(bodyClassesArray[i].startsWith("page-id-")) {
                     classWithPostId = bodyClassesArray[i].substring(8);
@@ -17,6 +18,9 @@ jQuery(document).ready(function() {
                 }
                 if(bodyClassesArray[i].startsWith("page-template-template-")) {
                     classWithpageTemplate = bodyClassesArray[i].substring(23);
+                }
+                if(bodyClassesArray[i].startsWith("kameleoon-market-")) {
+                    classWithpageMarket = bodyClassesArray[i].substring(17);
                 }
             } 
 
@@ -41,6 +45,7 @@ jQuery(document).ready(function() {
             datas.environment = environment;
             datas.region = region;
             datas.version = version;
+            datas.market = classWithpageMarket;
             (async () => {
                 const response = await chrome.runtime.sendMessage({datas: datas});
             })();
@@ -69,6 +74,6 @@ chrome.runtime.onMessage.addListener(
     document.getElementById("version").innerText = datas.version;    
     document.getElementById("region").innerText = datas.region;
     document.getElementById("pageTemplate").innerText = datas.pageTemplate;
-
+    document.getElementById("market").innerText = datas.market;
   }
 );
